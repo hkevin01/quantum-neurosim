@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "description": "GitHub Copilot configuration for Quantum NeuroSim project",
+  "settings": {
+    "codeGeneration": {
+      "quantumComputing": {
+        "preferredFrameworks": ["qiskit", "pennylane", "cirq"],
+        "conventions": {
+          "variableNaming": "snake_case",
+          "quantumGateStyle": "explicit_parameters",
+          "circuitDocumentation": "required"
+        }
+      },
+      "python": {
+        "styleGuide": "black",
+        "typeHints": "required",
+        "docstrings": "google_style"
+      }
+    },
+    "suggestions": {
+      "quantumAlgorithms": true,
+      "neuralNetworks": true,
+      "optimizationTechniques": true,
+      "errorHandling": "comprehensive"
+    }
+  },
+  "prompts": {
+    "quantumCircuit": "Generate quantum circuits with proper error handling, boundary checks, and comprehensive documentation. Include parameter validation and resource estimation.",
+    "neuralNetwork": "Implement neural network components with robust training loops, convergence checking, and memory management.",
+    "dataProcessing": "Create data processing functions with input validation, proper error handling, and performance monitoring.",
+    "testing": "Generate comprehensive test cases covering edge cases, quantum-specific scenarios, and integration tests."
+  },
+  "codePatterns": {
+    "quantumFunction": {
+      "template": "def ${function_name}(${params}) -> ${return_type}:\n    \"\"\"${docstring}\"\"\"\n    # Parameter validation\n    ${validation}\n    \n    # Main implementation\n    ${implementation}\n    \n    # Error handling\n    ${error_handling}\n    \n    return ${result}",
+      "requiredElements": ["docstring", "validation", "error_handling"]
+    }
+  }
+}

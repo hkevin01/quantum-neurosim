@@ -1,0 +1,55 @@
+# Prometheus Configuration for Quantum Computing Monitoring
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'quantum-neurosim'
+
+# Rule files
+rule_files:
+  - "rules/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Quantum development service
+  - job_name: 'quantum-dev'
+    static_configs:
+      - targets: ['quantum-dev:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Database monitoring
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['quantum-db:5432']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+
+  # Redis monitoring
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['quantum-redis:6379']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+
+  # GPU monitoring (if available)
+  - job_name: 'quantum-gpu'
+    static_configs:
+      - targets: ['quantum-gpu:8080']
+    scrape_interval: 15s  # More frequent for GPU metrics
+    metrics_path: '/metrics'
+
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+# Alerting configuration (webhook to future alerting service)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['localhost:9093']  # Future alertmanager
+
+# Storage retention (configured via command line)
+# --storage.tsdb.retention.time=7d --storage.tsdb.retention.size=1GB

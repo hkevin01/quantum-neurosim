@@ -1,0 +1,66 @@
+name: Question
+description: Ask a question about the project
+title: "[Question]: "
+labels: ["question", "help-wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your question! Please provide as much detail as possible.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Question Category
+      description: What is your question about?
+      options:
+        - Installation & Setup
+        - Quantum Computing Concepts
+        - Neural Network Implementation
+        - Usage & API
+        - Performance & Optimization
+        - Hardware Requirements
+        - Troubleshooting
+        - Theory & Mathematics
+        - Contributing
+        - General
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: Please describe your question in detail
+      placeholder: What would you like to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        Please provide any relevant context:
+        - What are you trying to achieve?
+        - What have you already tried?
+        - Any relevant code or examples?
+      placeholder: |
+        I'm trying to...
+        I've already tried...
+        Here's my code...
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if relevant)
+      description: System information if your question is technical
+      value: |
+        - OS:
+        - Python version:
+        - Package versions:
+      placeholder: Leave blank if not relevant
+    validations:
+      required: false

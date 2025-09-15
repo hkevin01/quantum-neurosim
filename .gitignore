@@ -1,0 +1,109 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Quantum computing specific
+qiskit_cache/
+*.qasm
+*.qobj
+quantum_results/
+circuit_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Data files (keep structure, ignore contents)
+data/raw/*
+data/processed/*
+data/experiments/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/experiments/.gitkeep
+
+# Results and outputs
+results/
+outputs/
+plots/
+figures/
+
+# Docker
+.dockerignore
+
+# Environment variables
+.env.local
+.env.development
+.env.production
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Profiling
+*.prof
+*.pstats
+
+# Security
+*.pem
+*.key
+secrets/

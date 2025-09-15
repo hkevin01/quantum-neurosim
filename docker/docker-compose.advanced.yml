@@ -1,0 +1,207 @@
+version: "3.8"
+
+services:
+  # CPU-Optimized Quantum Development Environment
+  quantum-dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.cpu-quantum
+    container_name: quantum-dev
+    ports:
+      - "8888:8888" # Jupyter Lab
+      - "8080:8080" # Web dashboard
+    volumes:
+      - ../src:/app/src
+      - ../notebooks:/app/notebooks
+      - ../data:/app/data
+      - ../tests:/app/tests
+      - ../results:/app/results
+      - quantum-cache:/app/cache
+      - ~/.aws:/home/quser/.aws:ro # AWS credentials
+      - ~/.qiskit:/home/quser/.qiskit:ro # IBM Quantum credentials
+    environment:
+      - PYTHONPATH=/app/src
+      - QUANTUM_LOG_LEVEL=INFO
+      - JUPYTER_ENABLE_LAB=yes
+      # Cloud provider configuration
+      - QISKIT_IBM_CHANNEL=ibm_quantum
+      - AWS_DEFAULT_REGION=us-east-1
+    networks:
+      - quantum-net
+    depends_on:
+      - quantum-db
+      - quantum-redis
+    restart: unless-stopped
+
+  # GPU-Accelerated Quantum Environment
+  quantum-gpu:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.gpu-quantum
+    container_name: quantum-gpu
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTHONPATH=/app/src
+      - QUANTUM_GPU_ENABLED=true
+    volumes:
+      - ../src:/app/src
+      - ../gpu-experiments:/app/experiments
+      - quantum-gpu-cache:/app/cache
+    ports:
+      - "8889:8888" # Alternative Jupyter port
+    networks:
+      - quantum-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles:
+      - gpu # Only start with --profile gpu
+
+  # Production Quantum Service
+  quantum-prod:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.cpu-quantum
+      target: production
+    container_name: quantum-prod
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../src:/app/src
+      - production-results:/app/results
+    environment:
+      - PYTHONPATH=/app/src
+      - QN_ENV=production
+      - QUANTUM_LOG_LEVEL=WARNING
+    networks:
+      - quantum-net
+    depends_on:
+      - quantum-db
+      - quantum-redis
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # PostgreSQL Database for experiment tracking
+  quantum-db:
+    image: postgres:15-alpine
+    container_name: quantum-db
+    environment:
+      POSTGRES_DB: quantum_experiments
+      POSTGRES_USER: quantum_user
+      POSTGRES_PASSWORD: quantum_pass
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    volumes:
+      - quantum-db-data:/var/lib/postgresql/data
+      - ../sql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - quantum-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quantum_user -d quantum_experiments"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis for quantum result caching
+  quantum-redis:
+    image: redis:7-alpine
+    container_name: quantum-redis
+    volumes:
+      - quantum-redis-data:/data
+      - ../config/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - quantum-net
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Prometheus monitoring
+  quantum-monitor:
+    image: prom/prometheus:latest
+    container_name: quantum-monitor
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../monitoring/rules:/etc/prometheus/rules
+      - quantum-metrics:/prometheus
+    networks:
+      - quantum-net
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+  # Grafana dashboard
+  quantum-grafana:
+    image: grafana/grafana:latest
+    container_name: quantum-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ../monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+      - ../monitoring/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=quantum123
+    networks:
+      - quantum-net
+    depends_on:
+      - quantum-monitor
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+  # Nginx reverse proxy for production
+  quantum-proxy:
+    image: nginx:alpine
+    container_name: quantum-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../config/nginx.conf:/etc/nginx/nginx.conf
+      - ../config/ssl:/etc/nginx/ssl
+    networks:
+      - quantum-net
+    depends_on:
+      - quantum-prod
+    restart: unless-stopped
+    profiles:
+      - production
+
+volumes:
+  quantum-db-data:
+  quantum-redis-data:
+  quantum-cache:
+  quantum-gpu-cache:
+  production-results:
+  quantum-metrics:
+  grafana-data:
+
+networks:
+  quantum-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1

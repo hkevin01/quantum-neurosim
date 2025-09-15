@@ -1,0 +1,70 @@
+# Quantum Computing Alert Rules for Prometheus
+
+groups:
+  - name: quantum_compute_alerts
+    rules:
+      # High memory usage alert
+      - alert: QuantumHighMemoryUsage
+        expr: (container_memory_usage_bytes / container_spec_memory_limit_bytes) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          service: quantum-compute
+        annotations:
+          summary: "High memory usage detected in quantum container"
+          description: "Memory usage is above 80% for {{ $labels.container_name }}"
+
+      # Quantum circuit execution time alert
+      - alert: QuantumCircuitSlowExecution
+        expr: quantum_circuit_execution_duration_seconds > 300
+        for: 2m
+        labels:
+          severity: warning
+          service: quantum-circuit
+        annotations:
+          summary: "Quantum circuit execution taking too long"
+          description: "Circuit execution time exceeded 5 minutes on {{ $labels.backend }}"
+
+      # Database connection issues
+      - alert: DatabaseConnectionFailed
+        expr: up{job="postgres"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: database
+        annotations:
+          summary: "Database connection failed"
+          description: "Cannot connect to quantum experiments database"
+
+      # Redis cache issues
+      - alert: RedisConnectionFailed
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: warning
+          service: cache
+        annotations:
+          summary: "Redis cache connection failed"
+          description: "Cannot connect to quantum results cache"
+
+      # GPU utilization alerts
+      - alert: GPUHighUtilization
+        expr: nvidia_gpu_utilization_percentage > 90
+        for: 5m
+        labels:
+          severity: warning
+          service: gpu-compute
+        annotations:
+          summary: "High GPU utilization detected"
+          description: "GPU utilization above 90% for 5+ minutes"
+
+      # Container restart alerts
+      - alert: ContainerRestarting
+        expr: increase(container_restart_count[1h]) > 3
+        for: 0m
+        labels:
+          severity: critical
+          service: container-health
+        annotations:
+          summary: "Container restarting frequently"
+          description: "Container {{ $labels.container_name }} has restarted {{ $value }} times in the last hour"

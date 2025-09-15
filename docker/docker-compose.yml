@@ -1,0 +1,143 @@
+version: "3.8"
+
+services:
+  # CPU-Optimized Quantum Development Environment
+  quantum-dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: development
+    container_name: qns-dev
+    ports:
+      - "8888:8888" # Jupyter Lab
+      - "6006:6006" # TensorBoard (if needed)
+    volumes:
+      - ../:/app
+      - qns-data:/app/data
+      - qns-results:/app/results
+      - qns-models:/app/models
+    environment:
+      - PYTHONPATH=/app/src
+      - QNS_LOG_LEVEL=INFO
+      - JUPYTER_ENABLE_LAB=yes
+    working_dir: /app
+    command: >
+      bash -c "
+        echo 'Starting Quantum NeuroSim development environment...'
+        && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+      "
+    networks:
+      - qns-network
+    restart: unless-stopped
+
+  # Notebook server for demos and tutorials
+  quantum-neurosim-notebooks:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: notebook
+    container_name: qns-notebooks
+    ports:
+      - "8889:8888" # Alternative port
+    volumes:
+      - ../notebooks:/app/notebooks
+      - ../examples:/app/examples
+      - qns-data:/app/data
+      - qns-results:/app/results
+    environment:
+      - PYTHONPATH=/app/src
+      - QNS_LOG_LEVEL=DEBUG
+    networks:
+      - qns-network
+    restart: unless-stopped
+
+  # Production API server (future use)
+  quantum-neurosim-api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    container_name: qns-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - qns-models:/app/models
+      - qns-results:/app/results
+    environment:
+      - PYTHONPATH=/app/src
+      - QNS_LOG_LEVEL=WARNING
+      - QNS_ENV=production
+    networks:
+      - qns-network
+    restart: unless-stopped
+    command: >
+      bash -c "
+        echo 'Quantum NeuroSim API server ready'
+        && python -c 'import qns; print(f\"QNS v{qns.__version__} loaded\")'
+        && tail -f /dev/null
+      "
+
+  # Database for experiment tracking (optional)
+  qns-db:
+    image: postgres:14-alpine
+    container_name: qns-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=quantum_neurosim
+      - POSTGRES_USER=qns_user
+      - POSTGRES_PASSWORD=qns_password
+    volumes:
+      - qns-db-data:/var/lib/postgresql/data
+    networks:
+      - qns-network
+    restart: unless-stopped
+
+  # Redis for caching (optional)
+  qns-redis:
+    image: redis:7-alpine
+    container_name: qns-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - qns-redis-data:/data
+    networks:
+      - qns-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Monitoring with Prometheus (optional)
+  qns-prometheus:
+    image: prom/prometheus:latest
+    container_name: qns-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - qns-prometheus-data:/prometheus
+    networks:
+      - qns-network
+    restart: unless-stopped
+
+# Persistent volumes for data
+volumes:
+  qns-data:
+    driver: local
+  qns-results:
+    driver: local
+  qns-models:
+    driver: local
+  qns-db-data:
+    driver: local
+  qns-redis-data:
+    driver: local
+  qns-prometheus-data:
+    driver: local
+
+# Network for service communication
+networks:
+  qns-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
