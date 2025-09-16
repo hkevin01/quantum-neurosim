@@ -47,7 +47,6 @@ scripts/
 
 ### 1. CPU-Optimized Development (Default)
 
-
 - **Image**: `Dockerfile.cpu-quantum`
 - **Purpose**: General quantum development, small to medium circuits
 - **Resources**: Standard CPU, 4-8GB RAM
@@ -56,7 +55,6 @@ scripts/
 ```bash
 docker-compose up quantum-dev
 ```
-
 
 ### 2. GPU-Accelerated Environment
 
@@ -69,7 +67,6 @@ docker-compose up quantum-dev
 ./scripts/start.sh --gpu
 ```
 
-
 ### 3. Production Service
 
 - **Purpose**: API server, production workloads
@@ -79,7 +76,6 @@ docker-compose up quantum-dev
 ```bash
 docker-compose --profile production up
 ```
-
 
 ## 🔧 Configuration
 
@@ -95,7 +91,6 @@ QISKIT_IBM_TOKEN=your_token
 AWS_ACCESS_KEY_ID=your_key
 CUDA_VISIBLE_DEVICES=0
 ```
-
 
 ### Cloud Provider Authentication
 
@@ -133,7 +128,6 @@ export AWS_SECRET_ACCESS_KEY="your_secret"
 
 ## 📊 Monitoring & Observability
 
-
 ### Prometheus Metrics (Port 9090)
 
 - Container resource usage
@@ -148,12 +142,10 @@ export AWS_SECRET_ACCESS_KEY="your_secret"
 - Resource utilization graphs
 - Alert management
 
-
 ```bash
 # Start monitoring stack
 ./scripts/start.sh --monitoring
 ```
-
 
 ## 🔄 Service Orchestration
 
@@ -199,7 +191,6 @@ docker-compose --profile monitoring up
 - **quantum-gpu-cache**: GPU-specific cache
 - **quantum-metrics**: Prometheus data
 
-
 ### Backup Strategy
 
 ```bash
@@ -211,7 +202,6 @@ docker-compose --profile monitoring up
 0 2 * * * /path/to/quantum-neurosim/scripts/backup.sh
 ```
 
-
 ## 🚀 Performance Optimization
 
 ### CPU Environment
@@ -219,7 +209,6 @@ docker-compose --profile monitoring up
 - **Memory**: 4-8GB minimum, 16GB recommended for >12 qubits
 - **CPU**: Multi-core processor, Intel/AMD x64
 - **Storage**: SSD recommended for database operations
-
 
 ### GPU Environment
 
@@ -236,7 +225,6 @@ docker-compose --profile monitoring up
 - Network latency: <2ms additional for cloud connections
 
 ## 🔐 Security Best Practices
-
 
 ### Container Security
 
@@ -284,7 +272,6 @@ docker info
 docker-compose logs quantum-dev
 ```
 
-
 #### GPU Not Detected
 
 ```bash
@@ -306,7 +293,6 @@ docker stats
 # Increase Docker memory limit (Docker Desktop)
 # Settings → Resources → Memory → 8GB+
 ```
-
 
 #### Cloud Connection Failures
 

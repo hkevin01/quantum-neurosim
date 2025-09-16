@@ -108,6 +108,93 @@ graph TB
 - **Quantum**: Exponential state space with polynomial resources
 - **ML Benefit**: Access to vastly larger model capacities
 
+# ⚛️ Quantum Libraries Overview
+
+Quantum NeuroSim leverages the most advanced Python quantum computing libraries, each with unique strengths for simulation, hardware access, and hybrid quantum-classical workflows. Below is a rundown of the core libraries used, with links, descriptions, and example usage. See the [examples/](examples/) directory for full scripts.
+
+| Library | Description | Official Link | Example |
+|---------|-------------|--------------|---------|
+| **Qiskit** | IBM's open-source SDK for working with quantum computers at the circuit and algorithm level. | [qiskit.org](https://qiskit.org/) | [examples/qiskit_example.py](examples/qiskit_example.py) |
+| **PennyLane** | Hybrid quantum-classical ML and differentiable programming, hardware-agnostic. | [pennylane.ai](https://pennylane.ai/) | [examples/pennylane_example.py](examples/pennylane_example.py) |
+| **Cirq** | Google's framework for designing, simulating, and running quantum circuits, with a focus on NISQ devices. | [quantumai.google/cirq](https://quantumai.google/cirq) | [examples/cirq_example.py](examples/cirq_example.py) |
+| **Amazon Braket SDK** | AWS's SDK for running quantum jobs on multiple cloud hardware providers. | [aws.amazon.com/braket](https://aws.amazon.com/braket/) | [examples/braket_example.py](examples/braket_example.py) |
+
+### Qiskit Example: Create and Simulate a Bell State
+
+```python
+from qiskit import QuantumCircuit, Aer, execute
+
+# Create a 2-qubit Bell state circuit
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)           # Hadamard on qubit 0
+circuit.cx(0, 1)       # CNOT from qubit 0 to 1
+circuit.measure([0, 1], [0, 1])
+
+# Simulate using the QasmSimulator
+simulator = Aer.get_backend('qasm_simulator')
+result = execute(circuit, simulator, shots=1024).result()
+counts = result.get_counts()
+print("Bell state counts:", counts)
+```
+
+See: [examples/qiskit_example.py](examples/qiskit_example.py)
+
+### PennyLane Example: Quantum Circuit as a Differentiable Function
+
+```python
+import pennylane as qml
+import numpy as np
+
+dev = qml.device('default.qubit', wires=2)
+
+@qml.qnode(dev)
+def bell_circuit(theta):
+    qml.Hadamard(wires=0)
+    qml.CNOT(wires=[0, 1])
+    qml.RY(theta, wires=0)
+    return qml.expval(qml.PauliZ(0))
+
+theta = np.pi / 4
+result = bell_circuit(theta)
+print("Expectation value:", result)
+```
+
+See: [examples/pennylane_example.py](examples/pennylane_example.py)
+
+### Cirq Example: Simulate a Quantum Circuit
+
+```python
+import cirq
+
+# Create two qubits
+q0, q1 = cirq.LineQubit.range(2)
+circuit = cirq.Circuit(
+    cirq.H(q0),
+    cirq.CNOT(q0, q1),
+    cirq.measure(q0, q1, key='result')
+)
+
+simulator = cirq.Simulator()
+result = simulator.run(circuit, repetitions=1000)
+print("Measurement results:", result.histogram(key='result'))
+```
+
+See: [examples/cirq_example.py](examples/cirq_example.py)
+
+### Amazon Braket Example: Run a Circuit on a Local Simulator
+
+```python
+from braket.circuits import Circuit
+from braket.devices import LocalSimulator
+
+circuit = Circuit().h(0).cnot(0, 1).measure(0, 1)
+device = LocalSimulator()
+result = device.run(circuit, shots=1000).result()
+print("Measurement counts:", result.measurement_counts)
+```
+
+See: [examples/braket_example.py](examples/braket_example.py)
+
 ## 🏗️ **Comprehensive System Architecture**
 
 Quantum NeuroSim implements a sophisticated, modular architecture that seamlessly integrates quantum computing, classical machine learning, and modern software engineering practices. Our design philosophy emphasizes scalability, maintainability, and quantum-classical hybrid optimization.
