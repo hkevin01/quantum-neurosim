@@ -27,13 +27,13 @@ Quantum NeuroSim represents the next frontier in artificial intelligence, seamle
 
 ### 🚀 **Core Mission**
 
-| Objective | Description | Impact |
+| <sub>Objective</sub> | <sub>Description</sub> | <sub>Impact</sub> |
 |-----------|-------------|---------|
-| **🔬 Quantum Advantage Discovery** | Identify and demonstrate computational problems where quantum methods outperform classical approaches | Unlock new classes of solvable ML problems |
-| **🧠 Neural Network Innovation** | Develop novel quantum neural architectures leveraging superposition, entanglement, and interference | Create more expressive and efficient models |
-| **🏭 Enterprise Applications** | Bridge quantum research to real-world business problems in optimization, simulation, and AI | Enable quantum-powered competitive advantages |
-| **🎓 Educational Ecosystem** | Provide accessible tools for learning and teaching quantum machine learning concepts | Accelerate quantum literacy and adoption |
-| **🌐 Community Building** | Foster collaboration between quantum physicists, ML researchers, and software engineers | Advance the entire field through open science |
+| <sub>**🔬 Quantum Advantage Discovery**</sub> | <sub>Identify and demonstrate computational problems where quantum methods outperform classical approaches</sub> | <sub>Unlock new classes of solvable ML problems</sub> |
+| <sub>**🧠 Neural Network Innovation**</sub> | <sub>Develop novel quantum neural architectures leveraging superposition, entanglement, and interference</sub> | <sub>Create more expressive and efficient models</sub> |
+| <sub>**🏭 Enterprise Applications**</sub> | <sub>Bridge quantum research to real-world business problems in optimization, simulation, and AI</sub> | <sub>Enable quantum-powered competitive advantages</sub> |
+| <sub>**🎓 Educational Ecosystem**</sub> | <sub>Provide accessible tools for learning and teaching quantum machine learning concepts</sub> | <sub>Accelerate quantum literacy and adoption</sub> |
+| <sub>**🌐 Community Building**</sub> | <sub>Foster collaboration between quantum physicists, ML researchers, and software engineers</sub> | <sub>Advance the entire field through open science</sub> |
 
 ### 🌌 **Why Quantum Neural Networks Matter**
 
@@ -112,12 +112,12 @@ graph TB
 
 Quantum NeuroSim leverages the most advanced Python quantum computing libraries, each with unique strengths for simulation, hardware access, and hybrid quantum-classical workflows. Below is a rundown of the core libraries used, with links, descriptions, and example usage. See the [examples/](examples/) directory for full scripts.
 
-| Library | Description | Official Link | Example |
+| <sub>Library</sub> | <sub>Description</sub> | <sub>Official Link</sub> | <sub>Example</sub> |
 |---------|-------------|--------------|---------|
-| **Qiskit** | IBM's open-source SDK for working with quantum computers at the circuit and algorithm level. | [qiskit.org](https://qiskit.org/) | [examples/qiskit_example.py](examples/qiskit_example.py) |
-| **PennyLane** | Hybrid quantum-classical ML and differentiable programming, hardware-agnostic. | [pennylane.ai](https://pennylane.ai/) | [examples/pennylane_example.py](examples/pennylane_example.py) |
-| **Cirq** | Google's framework for designing, simulating, and running quantum circuits, with a focus on NISQ devices. | [quantumai.google/cirq](https://quantumai.google/cirq) | [examples/cirq_example.py](examples/cirq_example.py) |
-| **Amazon Braket SDK** | AWS's SDK for running quantum jobs on multiple cloud hardware providers. | [aws.amazon.com/braket](https://aws.amazon.com/braket/) | [examples/braket_example.py](examples/braket_example.py) |
+| <sub>**Qiskit**</sub> | <sub>IBM's open-source SDK for working with quantum computers at the circuit and algorithm level.</sub> | <sub>[qiskit.org](https://qiskit.org/)</sub> | <sub>[examples/qiskit_example.py](examples/qiskit_example.py)</sub> |
+| <sub>**PennyLane**</sub> | <sub>Hybrid quantum-classical ML and differentiable programming, hardware-agnostic.</sub> | <sub>[pennylane.ai](https://pennylane.ai/)</sub> | <sub>[examples/pennylane_example.py](examples/pennylane_example.py)</sub> |
+| <sub>**Cirq**</sub> | <sub>Google's framework for designing, simulating, and running quantum circuits, with a focus on NISQ devices.</sub> | <sub>[quantumai.google/cirq](https://quantumai.google/cirq)</sub> | <sub>[examples/cirq_example.py](examples/cirq_example.py)</sub> |
+| <sub>**Amazon Braket SDK**</sub> | <sub>AWS's SDK for running quantum jobs on multiple cloud hardware providers.</sub> | <sub>[aws.amazon.com/braket](https://aws.amazon.com/braket/)</sub> | <sub>[examples/braket_example.py](examples/braket_example.py)</sub> |
 
 ### Qiskit Example: Create and Simulate a Bell State
 
@@ -476,12 +476,12 @@ flowchart LR
 
 Transform classical data into quantum states using various encoding strategies:
 
-| Encoder Type | Use Case | Advantages | Limitations |
+| <sub>Encoder Type</sub> | <sub>Use Case</sub> | <sub>Advantages</sub> | <sub>Limitations</sub> |
 |-------------|----------|------------|-------------|
-| **Angle Encoding** | General ML tasks | Simple, efficient | Limited to n_qubits features |
-| **Amplitude Encoding** | High-dimensional data | Exponential compression | Requires normalization |
-| **Basis Encoding** | Binary classification | Direct mapping | Binary features only |
-| **Feature Maps** | Complex patterns | Rich feature spaces | Higher circuit depth |
+| <sub>**Angle Encoding**</sub> | <sub>General ML tasks</sub> | <sub>Simple, efficient</sub> | <sub>Limited to n_qubits features</sub> |
+| <sub>**Amplitude Encoding**</sub> | <sub>High-dimensional data</sub> | <sub>Exponential compression</sub> | <sub>Requires normalization</sub> |
+| <sub>**Basis Encoding**</sub> | <sub>Binary classification</sub> | <sub>Direct mapping</sub> | <sub>Binary features only</sub> |
+| <sub>**Feature Maps**</sub> | <sub>Complex patterns</sub> | <sub>Rich feature spaces</sub> | <sub>Higher circuit depth</sub> |
 
 **Why These Encoders?**
 - **Angle Encoding**: Maps features to rotation angles, providing natural continuous parameter encoding
@@ -535,12 +535,12 @@ graph LR
 
 Advanced optimization techniques for quantum-classical hybrid systems:
 
-| Algorithm | Method | Best For | Complexity |
+| <sub>Algorithm</sub> | <sub>Method</sub> | <sub>Best For</sub> | <sub>Complexity</sub> |
 |-----------|---------|----------|------------|
-| **Parameter-Shift** | Exact gradients | Small circuits | O(n_params) |
-| **Finite Differences** | Numerical gradients | Any circuit | O(n_params) |
-| **Natural Gradients** | Quantum Fisher info | Fast convergence | O(n_params²) |
-| **SPSA** | Stochastic approximation | Noisy hardware | O(1) |
+| <sub>**Parameter-Shift**</sub> | <sub>Exact gradients</sub> | <sub>Small circuits</sub> | <sub>O(n_params)</sub> |
+| <sub>**Finite Differences**</sub> | <sub>Numerical gradients</sub> | <sub>Any circuit</sub> | <sub>O(n_params)</sub> |
+| <sub>**Natural Gradients**</sub> | <sub>Quantum Fisher info</sub> | <sub>Fast convergence</sub> | <sub>O(n_params²)</sub> |
+| <sub>**SPSA**</sub> | <sub>Stochastic approximation</sub> | <sub>Noisy hardware</sub> | <sub>O(1)</sub> |
 
 ### 4. **Quantum Neural Network Models** 🧠
 
@@ -592,39 +592,39 @@ Our technology choices reflect years of research and practical experience in qua
 
 ### ⚛️ **Quantum Computing Frameworks - Why Each Matters**
 
-| Framework | Core Strengths | Strategic Benefits | Use Cases |
+| <sub>Framework</sub> | <sub>Core Strengths</sub> | <sub>Strategic Benefits</sub> | <sub>Use Cases</sub> |
 |-----------|----------------|-------------------|-----------|
-| **🔬 IBM Qiskit** | • Hardware access to 100+ quantum computers<br/>• Mature quantum circuit ecosystem<br/>• Advanced noise models & error mitigation | • Direct path to real quantum hardware<br/>• Industry-standard quantum software<br/>• Extensive community & documentation | • Production quantum ML<br/>• Hardware benchmarking<br/>• Research validation |
-| **🍃 Xanadu PennyLane** | • Seamless automatic differentiation<br/>• Quantum-classical hybrid training<br/>• Hardware-agnostic interfaces | • Natural ML integration<br/>• Unified quantum-classical gradients<br/>• Simplified model development | • Hybrid neural networks<br/>• Quantum gradient methods<br/>• Multi-framework compatibility |
-| **🌀 Google Cirq** | • Low-level circuit optimization<br/>• Advanced gate compilation<br/>• Research-focused algorithms | • Maximum control over circuits<br/>• Cutting-edge algorithm development<br/>• Hardware-specific optimizations | • Algorithm research<br/>• Custom gate sequences<br/>• Performance optimization |
-| **☁️ Amazon Braket** | • Multi-vendor hardware access<br/>• Scalable cloud infrastructure<br/>• Enterprise-grade security | • Vendor-neutral quantum access<br/>• Seamless cloud integration<br/>• Production scalability | • Cloud deployment<br/>• Multi-hardware comparison<br/>• Enterprise applications |
+| <sub>**🔬 IBM Qiskit**</sub> | <sub>• Hardware access to 100+ quantum computers<br/>• Mature quantum circuit ecosystem<br/>• Advanced noise models & error mitigation</sub> | <sub>• Direct path to real quantum hardware<br/>• Industry-standard quantum software<br/>• Extensive community & documentation</sub> | <sub>• Production quantum ML<br/>• Hardware benchmarking<br/>• Research validation</sub> |
+| <sub>**🍃 Xanadu PennyLane**</sub> | <sub>• Seamless automatic differentiation<br/>• Quantum-classical hybrid training<br/>• Hardware-agnostic interfaces</sub> | <sub>• Natural ML integration<br/>• Unified quantum-classical gradients<br/>• Simplified model development</sub> | <sub>• Hybrid neural networks<br/>• Quantum gradient methods<br/>• Multi-framework compatibility</sub> |
+| <sub>**🌀 Google Cirq**</sub> | <sub>• Low-level circuit optimization<br/>• Advanced gate compilation<br/>• Research-focused algorithms</sub> | <sub>• Maximum control over circuits<br/>• Cutting-edge algorithm development<br/>• Hardware-specific optimizations</sub> | <sub>• Algorithm research<br/>• Custom gate sequences<br/>• Performance optimization</sub> |
+| <sub>**☁️ Amazon Braket**</sub> | <sub>• Multi-vendor hardware access<br/>• Scalable cloud infrastructure<br/>• Enterprise-grade security</sub> | <sub>• Vendor-neutral quantum access<br/>• Seamless cloud integration<br/>• Production scalability</sub> | <sub>• Cloud deployment<br/>• Multi-hardware comparison<br/>• Enterprise applications</sub> |
 
 ### 🧠 **Classical ML Integration - Synergistic Design**
 
-| Library | Technical Role | Quantum Synergy | Performance Impact |
+| <sub>Library</sub> | <sub>Technical Role</sub> | <sub>Quantum Synergy</sub> | <sub>Performance Impact</sub> |
 |---------|---------------|------------------|-------------------|
-| **🔢 NumPy/SciPy** | • Fundamental array operations<br/>• Linear algebra primitives<br/>• Scientific computing functions | • Quantum state vector manipulation<br/>• Classical preprocessing pipelines<br/>• Gradient computation backends | • BLAS/LAPACK optimization<br/>• Memory-efficient operations<br/>• Hardware acceleration ready |
-| **📊 scikit-learn** | • Classical ML baselines<br/>• Feature preprocessing<br/>• Model evaluation metrics | • Hybrid model comparison<br/>• Data pipeline integration<br/>• Quantum advantage validation | • Optimized algorithms<br/>• Sparse matrix support<br/>• Production-ready tools |
-| **🔥 PyTorch** | • Dynamic neural networks<br/>• GPU acceleration<br/>• Automatic differentiation | • Hybrid quantum-classical models<br/>• End-to-end trainable systems<br/>• Research flexibility | • CUDA optimization<br/>• Distributed training<br/>• Memory efficiency |
-| **📈 Matplotlib/Plotly** | • Scientific visualization<br/>• Interactive dashboards<br/>• Publication-quality figures | • Quantum circuit visualization<br/>• Training progress monitoring<br/>• Result interpretation tools | • Vector graphics export<br/>• Web-based interactivity<br/>• Large dataset handling |
+| <sub>**🔢 NumPy/SciPy**</sub> | <sub>• Fundamental array operations<br/>• Linear algebra primitives<br/>• Scientific computing functions</sub> | <sub>• Quantum state vector manipulation<br/>• Classical preprocessing pipelines<br/>• Gradient computation backends</sub> | <sub>• BLAS/LAPACK optimization<br/>• Memory-efficient operations<br/>• Hardware acceleration ready</sub> |
+| <sub>**📊 scikit-learn**</sub> | <sub>• Classical ML baselines<br/>• Feature preprocessing<br/>• Model evaluation metrics</sub> | <sub>• Hybrid model comparison<br/>• Data pipeline integration<br/>• Quantum advantage validation</sub> | <sub>• Optimized algorithms<br/>• Sparse matrix support<br/>• Production-ready tools</sub> |
+| <sub>**🔥 PyTorch**</sub> | <sub>• Dynamic neural networks<br/>• GPU acceleration<br/>• Automatic differentiation</sub> | <sub>• Hybrid quantum-classical models<br/>• End-to-end trainable systems<br/>• Research flexibility</sub> | <sub>• CUDA optimization<br/>• Distributed training<br/>• Memory efficiency</sub> |
+| <sub>**📈 Matplotlib/Plotly**</sub> | <sub>• Scientific visualization<br/>• Interactive dashboards<br/>• Publication-quality figures</sub> | <sub>• Quantum circuit visualization<br/>• Training progress monitoring<br/>• Result interpretation tools</sub> | <sub>• Vector graphics export<br/>• Web-based interactivity<br/>• Large dataset handling</sub> |
 
 ### ⚡ **Performance & Scalability - Built for Scale**
 
-| Component | Optimization Strategy | Scalability Benefits | Real-World Impact |
+| <sub>Component</sub> | <sub>Optimization Strategy</sub> | <sub>Scalability Benefits</sub> | <sub>Real-World Impact</sub> |
 |-----------|---------------------|---------------------|-------------------|
-| **🔧 Joblib** | • Intelligent parallel processing<br/>• Memory mapping for large arrays<br/>• Process-based parallelization | • Multi-core gradient computation<br/>• Embarrassingly parallel tasks<br/>• Memory-efficient operations | • 4-8x speedup on multi-core systems<br/>• Reduced memory footprint<br/>• Better resource utilization |
-| **📊 Dask** | • Distributed computing framework<br/>• Lazy evaluation strategies<br/>• Dynamic task scheduling | • Cloud-scale quantum experiments<br/>• Large parameter space exploration<br/>• Multi-node quantum simulations | • Horizontal scaling capability<br/>• Fault-tolerant computation<br/>• Adaptive resource management |
-| **⚡ Numba** | • Just-in-time compilation<br/>• CUDA GPU acceleration<br/>• Automatic optimization | • Fast numerical kernels<br/>• GPU-accelerated quantum operations<br/>• Near-C performance in Python | • 10-100x speedup for numerical code<br/>• GPU memory optimization<br/>• Automatic vectorization |
-| **🚀 CuPy** | • NumPy-compatible GPU arrays<br/>• CUDA kernel integration<br/>• Memory pool optimization | • GPU-accelerated quantum simulations<br/>• Large-scale matrix operations<br/>• Parallel quantum state processing | • GPU memory efficiency<br/>• Seamless CPU-GPU transfers<br/>• Optimized linear algebra |
+| <sub>**🔧 Joblib**</sub> | <sub>• Intelligent parallel processing<br/>• Memory mapping for large arrays<br/>• Process-based parallelization</sub> | <sub>• Multi-core gradient computation<br/>• Embarrassingly parallel tasks<br/>• Memory-efficient operations</sub> | <sub>• 4-8x speedup on multi-core systems<br/>• Reduced memory footprint<br/>• Better resource utilization</sub> |
+| <sub>**📊 Dask**</sub> | <sub>• Distributed computing framework<br/>• Lazy evaluation strategies<br/>• Dynamic task scheduling</sub> | <sub>• Cloud-scale quantum experiments<br/>• Large parameter space exploration<br/>• Multi-node quantum simulations</sub> | <sub>• Horizontal scaling capability<br/>• Fault-tolerant computation<br/>• Adaptive resource management</sub> |
+| <sub>**⚡ Numba**</sub> | <sub>• Just-in-time compilation<br/>• CUDA GPU acceleration<br/>• Automatic optimization</sub> | <sub>• Fast numerical kernels<br/>• GPU-accelerated quantum operations<br/>• Near-C performance in Python</sub> | <sub>• 10-100x speedup for numerical code<br/>• GPU memory optimization<br/>• Automatic vectorization</sub> |
+| <sub>**🚀 CuPy**</sub> | <sub>• NumPy-compatible GPU arrays<br/>• CUDA kernel integration<br/>• Memory pool optimization</sub> | <sub>• GPU-accelerated quantum simulations<br/>• Large-scale matrix operations<br/>• Parallel quantum state processing</sub> | <sub>• GPU memory efficiency<br/>• Seamless CPU-GPU transfers<br/>• Optimized linear algebra</sub> |
 
 ### 🐳 **Container & DevOps Stack - Production Ready**
 
-| Technology | Purpose | Benefits | Integration |
+| <sub>Technology</sub> | <sub>Purpose</sub> | <sub>Benefits</sub> | <sub>Integration</sub> |
 |------------|---------|----------|-------------|
-| **🐳 Docker** | • Reproducible environments<br/>• Dependency isolation<br/>• Multi-stage builds | • Consistent dev/prod parity<br/>• Easy deployment<br/>• Version control for environments | • CPU & GPU variants<br/>• Multi-service orchestration<br/>• Cloud-native deployment |
-| **📊 PostgreSQL** | • Experiment tracking database<br/>• ACID compliance<br/>• Advanced indexing | • Reliable data persistence<br/>• Complex query capabilities<br/>• Concurrent access support | • Experiment metadata storage<br/>• Result aggregation<br/>• Performance analytics |
-| **⚡ Redis** | • High-performance caching<br/>• In-memory data structures<br/>• Persistence options | • Quantum result caching<br/>• Session state management<br/>• Real-time data sharing | • Sub-millisecond response times<br/>• Automatic expiration<br/>• Cluster support |
-| **📈 Prometheus/Grafana** | • Metrics collection & visualization<br/>• Alerting systems<br/>• Time-series database | • Performance monitoring<br/>• Resource optimization<br/>• Operational insights | • Custom quantum metrics<br/>• Real-time dashboards<br/>• Automated alerting |
+| <sub>**🐳 Docker**</sub> | <sub>• Reproducible environments<br/>• Dependency isolation<br/>• Multi-stage builds</sub> | <sub>• Consistent dev/prod parity<br/>• Easy deployment<br/>• Version control for environments</sub> | <sub>• CPU & GPU variants<br/>• Multi-service orchestration<br/>• Cloud-native deployment</sub> |
+| <sub>**📊 PostgreSQL**</sub> | <sub>• Experiment tracking database<br/>• ACID compliance<br/>• Advanced indexing</sub> | <sub>• Reliable data persistence<br/>• Complex query capabilities<br/>• Concurrent access support</sub> | <sub>• Experiment metadata storage<br/>• Result aggregation<br/>• Performance analytics</sub> |
+| <sub>**⚡ Redis**</sub> | <sub>• High-performance caching<br/>• In-memory data structures<br/>• Persistence options</sub> | <sub>• Quantum result caching<br/>• Session state management<br/>• Real-time data sharing</sub> | <sub>• Sub-millisecond response times<br/>• Automatic expiration<br/>• Cluster support</sub> |
+| <sub>**📈 Prometheus/Grafana**</sub> | <sub>• Metrics collection & visualization<br/>• Alerting systems<br/>• Time-series database</sub> | <sub>• Performance monitoring<br/>• Resource optimization<br/>• Operational insights</sub> | <sub>• Custom quantum metrics<br/>• Real-time dashboards<br/>• Automated alerting</sub> |
 
 ### 🔒 **Security & Reliability - Enterprise Grade**
 
@@ -767,13 +767,13 @@ print(f'📊 Available backends: {qns.get_available_backends()}')
 
 ### ⚙️ **System Requirements & Hardware Optimization**
 
-| Component | Minimum | Recommended | Optimal | Notes |
+| <sub>Component</sub> | <sub>Minimum</sub> | <sub>Recommended</sub> | <sub>Optimal</sub> | <sub>Notes</sub> |
 |-----------|---------|-------------|---------|-------|
-| **🧠 RAM** | 4 GB | 16 GB | 32+ GB | Quantum simulations scale exponentially |
-| **🖥️ CPU** | 2 cores | 8 cores | 16+ cores | Parallel gradient computation & optimization |
-| **💾 Storage** | 5 GB | 50 GB | 500+ GB | Datasets, models, experiment results, Docker images |
-| **🚀 GPU** | None | GTX 1060+ | RTX 3080+ | Optional for classical ML & large quantum simulations |
-| **🌐 Network** | Basic | Broadband | High-speed | Cloud quantum hardware access |
+| <sub>**🧠 RAM**</sub> | <sub>4 GB</sub> | <sub>16 GB</sub> | <sub>32+ GB</sub> | <sub>Quantum simulations scale exponentially</sub> |
+| <sub>**🖥️ CPU**</sub> | <sub>2 cores</sub> | <sub>8 cores</sub> | <sub>16+ cores</sub> | <sub>Parallel gradient computation & optimization</sub> |
+| <sub>**💾 Storage**</sub> | <sub>5 GB</sub> | <sub>50 GB</sub> | <sub>500+ GB</sub> | <sub>Datasets, models, experiment results, Docker images</sub> |
+| <sub>**🚀 GPU**</sub> | <sub>None</sub> | <sub>GTX 1060+</sub> | <sub>RTX 3080+</sub> | <sub>Optional for classical ML & large quantum simulations</sub> |
+| <sub>**🌐 Network**</sub> | <sub>Basic</sub> | <sub>Broadband</sub> | <sub>High-speed</sub> | <sub>Cloud quantum hardware access</sub> |
 
 #### **GPU Requirements (Optional but Recommended)**
 ```bash
@@ -1070,14 +1070,14 @@ gantt
 
 ### 🚀 **Upcoming Features (v2.0)**
 
-| Feature | Priority | Timeline | Impact |
+| <sub>Feature</sub> | <sub>Priority</sub> | <sub>Timeline</sub> | <sub>Impact</sub> |
 |---------|----------|----------|--------|
-| **🧬 Quantum Chemistry Integration** | High | Q4 2024 | Enable molecular simulation & drug discovery |
-| **🎯 Quantum Reinforcement Learning** | High | Q1 2025 | Advanced decision-making algorithms |
-| **� Quantum Natural Language Processing** | Medium | Q2 2025 | Language understanding with quantum advantage |
-| **🔮 Quantum Generative Models** | Medium | Q2 2025 | Creative AI with quantum capabilities |
-| **⚡ Hardware-Specific Optimizations** | High | Q3 2025 | Platform-specific quantum circuits |
-| **🌐 Federated Quantum Learning** | Low | Q4 2025 | Distributed quantum ML across organizations |
+| <sub>**🧬 Quantum Chemistry Integration**</sub> | <sub>High</sub> | <sub>Q4 2024</sub> | <sub>Enable molecular simulation & drug discovery</sub> |
+| <sub>**🎯 Quantum Reinforcement Learning**</sub> | <sub>High</sub> | <sub>Q1 2025</sub> | <sub>Advanced decision-making algorithms</sub> |
+| <sub>**� Quantum Natural Language Processing**</sub> | <sub>Medium</sub> | <sub>Q2 2025</sub> | <sub>Language understanding with quantum advantage</sub> |
+| <sub>**🔮 Quantum Generative Models**</sub> | <sub>Medium</sub> | <sub>Q2 2025</sub> | <sub>Creative AI with quantum capabilities</sub> |
+| <sub>**⚡ Hardware-Specific Optimizations**</sub> | <sub>High</sub> | <sub>Q3 2025</sub> | <sub>Platform-specific quantum circuits</sub> |
+| <sub>**🌐 Federated Quantum Learning**</sub> | <sub>Low</sub> | <sub>Q4 2025</sub> | <sub>Distributed quantum ML across organizations</sub> |
 
 ## 🤝 **Contributing to Quantum NeuroSim**
 
@@ -1128,13 +1128,13 @@ pre-commit install  # Set up code quality hooks
 
 #### **Code Quality Standards**
 
-| Aspect | Requirement | Details |
+| <sub>Aspect</sub> | <sub>Requirement</sub> | <sub>Details</sub> |
 |--------|------------|---------|
-| **🎨 Code Style** | Black + PEP 8 | Automated formatting, 88 char line limit |
-| **📝 Documentation** | Google-style docstrings | All public APIs must be documented |
-| **✅ Testing** | >90% coverage | Unit, integration, and quantum-specific tests |
-| **🔧 Type Hints** | Full mypy compliance | All functions must have proper type annotations |
-| **📊 Performance** | Benchmark new features | Include performance comparisons for algorithms |
+| <sub>**🎨 Code Style**</sub> | <sub>Black + PEP 8</sub> | <sub>Automated formatting, 88 char line limit</sub> |
+| <sub>**📝 Documentation**</sub> | <sub>Google-style docstrings</sub> | <sub>All public APIs must be documented</sub> |
+| <sub>**✅ Testing**</sub> | <sub>>90% coverage</sub> | <sub>Unit, integration, and quantum-specific tests</sub> |
+| <sub>**🔧 Type Hints**</sub> | <sub>Full mypy compliance</sub> | <sub>All functions must have proper type annotations</sub> |
+| <sub>**📊 Performance**</sub> | <sub>Benchmark new features</sub> | <sub>Include performance comparisons for algorithms</sub> |
 
 #### **Testing Guidelines**
 
@@ -1198,12 +1198,12 @@ class TestQuantumLayer:
 
 #### **Contributor Levels**
 
-| Level | Requirements | Benefits |
+| <sub>Level</sub> | <sub>Requirements</sub> | <sub>Benefits</sub> |
 |-------|-------------|----------|
-| **🌱 Quantum Explorer** | 1+ merged PR | Listed in contributors |
-| **⚡ Quantum Developer** | 5+ PRs, 1 major feature | Reviewer privileges |
-| **🧠 Quantum Researcher** | Published research using framework | Advisory board invitation |
-| **🌟 Quantum Master** | Core maintainer | Project decision authority |
+| <sub>**🌱 Quantum Explorer**</sub> | <sub>1+ merged PR</sub> | <sub>Listed in contributors</sub> |
+| <sub>**⚡ Quantum Developer**</sub> | <sub>5+ PRs, 1 major feature</sub> | <sub>Reviewer privileges</sub> |
+| <sub>**🧠 Quantum Researcher**</sub> | <sub>Published research using framework</sub> | <sub>Advisory board invitation</sub> |
+| <sub>**🌟 Quantum Master**</sub> | <sub>Core maintainer</sub> | <sub>Project decision authority</sub> |
 
 #### **Research Recognition**
 
@@ -1216,12 +1216,12 @@ class TestQuantumLayer:
 
 #### **Communication Channels**
 
-| Channel | Purpose | Response Time |
+| <sub>Channel</sub> | <sub>Purpose</sub> | <sub>Response Time</sub> |
 |---------|---------|---------------|
-| **💬 GitHub Discussions** | Q&A, feature requests | 24-48 hours |
-| **🐛 GitHub Issues** | Bug reports, technical issues | 12-24 hours |
-| **📧 Maintainer Contact** | Private inquiries, collaborations | 2-5 business days |
-| **🎓 Educational Support** | Learning resources, tutorials | Weekly office hours |
+| <sub>**💬 GitHub Discussions**</sub> | <sub>Q&A, feature requests</sub> | <sub>24-48 hours</sub> |
+| <sub>**🐛 GitHub Issues**</sub> | <sub>Bug reports, technical issues</sub> | <sub>12-24 hours</sub> |
+| <sub>**📧 Maintainer Contact**</sub> | <sub>Private inquiries, collaborations</sub> | <sub>2-5 business days</sub> |
+| <sub>**🎓 Educational Support**</sub> | <sub>Learning resources, tutorials</sub> | <sub>Weekly office hours</sub> |
 
 #### **Development Support**
 
@@ -1267,12 +1267,12 @@ Built upon decades of quantum computing and machine learning research from:
 ### Project Maintainers
 For technical inquiries, research collaborations, or enterprise support:
 
-| Contact Type | Method | Response Time |
+| <sub>Contact Type</sub> | <sub>Method</sub> | <sub>Response Time</sub> |
 |--------------|--------|---------------|
-| **� Bug Reports** | [GitHub Issues](https://github.com/quantum-neurosim/quantum-neurosim/issues) | 12-24 hours |
-| **� Feature Requests** | [GitHub Discussions](https://github.com/quantum-neurosim/quantum-neurosim/discussions) | 24-48 hours |
-| **� Direct Contact** | Create GitHub issue with `@maintainer` tag | 2-5 business days |
-| **🏢 Enterprise Support** | Enterprise tier available for commercial applications | Contact for details |
+| <sub>**� Bug Reports**</sub> | <sub>[GitHub Issues](https://github.com/quantum-neurosim/quantum-neurosim/issues)</sub> | <sub>12-24 hours</sub> |
+| <sub>**� Feature Requests**</sub> | <sub>[GitHub Discussions](https://github.com/quantum-neurosim/quantum-neurosim/discussions)</sub> | <sub>24-48 hours</sub> |
+| <sub>**� Direct Contact**</sub> | <sub>Create GitHub issue with `@maintainer` tag</sub> | <sub>2-5 business days</sub> |
+| <sub>**🏢 Enterprise Support**</sub> | <sub>Enterprise tier available for commercial applications</sub> | <sub>Contact for details</sub> |
 
 ### Community Guidelines
 - **Be Respectful**: Maintain professional and inclusive communication
